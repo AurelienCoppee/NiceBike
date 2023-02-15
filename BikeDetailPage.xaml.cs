@@ -12,7 +12,6 @@ public partial class BikeDetailPage : ContentPage
         if (bike != null)
         {
             // Populate the details of the selected bike in the Grid
-            // ...
             BindingContext = bike;
         }
     }
