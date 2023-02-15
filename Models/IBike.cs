@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NiceBike
 {
-    public class Bike
+    public interface IBike
     {
         public string Name { get; set; }
         public string Description { get; set; }
