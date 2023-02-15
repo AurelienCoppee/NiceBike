@@ -47,9 +47,11 @@
                                 HorizontalOptions="Center" />
                                 <Button
                                 Text="Add to Cart"
-                                Clicked="OnAddToCartClicked"
+                                Clicked="AddToCart"
                                 CommandParameter="{Binding .}"
                                 HorizontalOptions="Center" />
+                                <Button Text="Learn More" Command="{Binding LearnMoreCommand}"
+                        BackgroundColor="White" TextColor="Black" />
                             </StackLayout>
                         </Grid>
                     </DataTemplate>

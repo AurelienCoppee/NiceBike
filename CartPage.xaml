@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NiceBike.CartPage">
+    <StackLayout>
+        <ListView ItemsSource="{Binding CartItems}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Image Source="{Binding Image}" Aspect="AspectFit" WidthRequest="80" HeightRequest="80"/>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold"/>
+                                <Label Text="{Binding Price}" FontSize="Medium"/>
+                                <Label Text="{Binding SizesAndColors}" FontSize="Medium"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

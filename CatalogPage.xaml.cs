@@ -29,6 +29,7 @@ using System.Threading.Tasks;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;
+using NiceBike.Models;
 
 namespace NiceBike
 {
@@ -43,10 +44,17 @@ namespace NiceBike
             BindingContext = new CatalogViewModel();
         }
 
-        private void OnAddToCartClicked(object sender, EventArgs e)
+        private void AddToCart(object sender, EventArgs e)
         {
-            // Handle adding the selected bike to the cart
+            var button = sender as Button;
+            var bike = button?.BindingContext as Bike;
+            if (bike != null)
+            {
+                App.Cart.AddToCart(bike);
+                Application.Current.MainPage.Navigation.PushAsync(new CartPage());
+            }
         }
+
     }
 }
 

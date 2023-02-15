@@ -1,8 +1,11 @@
-﻿namespace NiceBike;
+﻿using NiceBike.Models;
+
+namespace NiceBike;
 
 public partial class App : Application
 {
-	public App()
+    public static Cart Cart { get; } = new Cart();
+    public App()
 	{
 		InitializeComponent();
 
