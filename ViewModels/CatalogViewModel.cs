@@ -1,3 +1,4 @@
+using NiceBike.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 

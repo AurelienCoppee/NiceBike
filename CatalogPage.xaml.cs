@@ -33,10 +33,10 @@ using Microsoft.Maui.Controls.Xaml;
 namespace NiceBike
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class CatalogPage : ContentPage
     {
 
-        public MainPage()
+        public CatalogPage()
         {
             InitializeComponent();
 
