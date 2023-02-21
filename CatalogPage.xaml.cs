@@ -47,11 +47,21 @@ namespace NiceBike
         private void AddToCart(object sender, EventArgs e)
         {
             var button = sender as Button;
+            
             var bike = button?.BindingContext as Bike;
             if (bike != null)
             {
                 App.Cart.AddToCart(bike);
                 Application.Current.MainPage.Navigation.PushAsync(new CartPage());
+                if (bike.BuiltStock > 0)
+                {
+                    bike.BuiltStock--;
+
+                }
+                else if (bike.PartStock > 0)
+                {
+                    bike.PartStock--;
+                }
             }
         }
 
