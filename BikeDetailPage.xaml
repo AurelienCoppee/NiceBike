@@ -7,27 +7,37 @@
         <ScrollView>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="5"
-                       Source="{Binding Image}" HeightRequest="500"/>
+                
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="7"
+                       Source="{Binding Image}" HeightRequest="500"
+                       Aspect="AspectFill"/>
                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}"
+                       HorizontalOptions="CenterAndExpand"
                        FontSize="Large" FontAttributes="Bold" Margin="10,10,10,0"/>
                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}"
-                       FontSize="Medium" Margin="10,10,10,0"/>
-                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Price}"
-                       FontSize="Medium" Margin="10,10,10,0"/>
-                <Label Grid.Row="3" Grid.Column="1" Text="{Binding SizesAndColors}"
-                       FontSize="Medium" Margin="10,10,10,0"/>
-                <Button Grid.Row="4" Grid.Column="1" Text="Add to Cart"
+                       FontSize="Small" Margin="10"/>
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Price, StringFormat='-Price : {0:F0} €'}"
+                       FontSize="Small" Margin="10"/>
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding PartStock, StringFormat='-Part Stock : {0:F0}'}"
+                       FontSize="Small" Margin="10"/>
+                <Label Grid.Row="4" Grid.Column="1" Text="{Binding BuiltStock, StringFormat='-Built Stock : {0:F0}'}"
+                       FontSize="Small" Margin="10"/>
+                <Label Grid.Row="5" Grid.Column="1" Text="{Binding SizesAndColors}"
+                       FontSize="Small" Margin="10"/>
+                <Button Grid.Row="6" Grid.Column="1" Text="Add to Cart"
                         Clicked="AddToCart"/>
             </Grid>
         </ScrollView>
