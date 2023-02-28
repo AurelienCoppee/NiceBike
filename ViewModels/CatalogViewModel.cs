@@ -1,6 +1,7 @@
 using NiceBike.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using MySql.Data.MySqlClient;
 
 namespace NiceBike
 {
@@ -60,9 +61,22 @@ namespace NiceBike
         }
         private int GetStockBuilt()
         {
-            //Query the db with the name of the part
-            return 5;
-        }
+            string connectionString = "server=pat.infolab.ecam.be;port=63314;database=NiceBike;user=admin;password=password;";
+
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+                connection.Open();
+                Console.WriteLine("Connection successful!");
+
+                string queryString = "SELECT COUNT(*) FROM bike_list WHERE config = 1";
+                using (MySqlCommand command = new MySqlCommand(queryString, connection)) {
+                        object result = command.ExecuteScalar();
+                        int rowCount = Convert.ToInt32(result);
+                        Console.WriteLine("Row count: " + rowCount);
+                connection.Close();
+                return rowCount;
+            }
+            }
         private int GetStockParts()
         {
             List<(string,int)> partList = new List<(string,int)>
