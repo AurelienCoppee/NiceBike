@@ -24,9 +24,30 @@ namespace NiceBike
             // Initialize the Bikes collection with some sample data
             Bikes = new ObservableCollection<Bike>
             {
-                new Bike { Name = "City Bike", Description = "Simple bike for city travels with all needed parts like mudguards and lights", Price = 499.99M, SizesAndColors = "Available in sizes 26\" and 28\", in blue or red", Image = "bike.jpg" ,PartStock = GetStockParts(),BuiltStock = GetStockBuilt()},
-                new Bike { Name = "Explorer Bike", Description = "A mountain bike with wider tires and more grooved, and adapted mudguards", Price = 699.99M, SizesAndColors = "Available in sizes 26\" and 28\", in green or black", Image = "bike.jpg",PartStock = GetStockParts() ,BuiltStock = GetStockBuilt()},
-                new Bike { Name = "Adventure Bike", Description = "A mountain bike with reinforced frame, no luggage rack, mudguards or light", Price = 799.99M, SizesAndColors = "Available in sizes 26\" and 28\", in yellow or orange", Image = "bike.jpg",PartStock = GetStockParts() ,BuiltStock = GetStockBuilt()}
+                new Bike(
+                    "Simple bike for city travels with all needed parts like mudguards and lights",
+                    499.99M,
+                    "City Bike",
+                    "bike.jpg",
+                    GetStockParts(),
+                    GetStockBuilt()
+                ),
+                new Bike(
+                    "A mountain bike with wider tires and more grooved, and adapted mudguards",
+                    499.99M,
+                    "Explorer Bike",
+                    "bike.jpg",
+                    GetStockParts(),
+                    GetStockBuilt()
+                ),
+                new Bike(
+                    "A mountain bike with reinforced frame, no luggage rack, mudguards or light",
+                    499.99M,
+                    "Adventure Bike",
+                    "bike.jpg",
+                    GetStockParts(),
+                    GetStockBuilt()
+                )
             };
 
             foreach (var bike in Bikes)

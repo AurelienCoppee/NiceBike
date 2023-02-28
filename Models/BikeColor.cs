@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NiceBike.Models
+namespace NiceBike.Models;
+
+public class BikeColor : AbstractBikeDecorator
 {
-    internal class BikeColor
+    private string? color;
+    public string? Color { get => color; set => color = value; }
+    public BikeColor(AbstractBike bike, string? color) : base(bike)
     {
+        this.color = color;
     }
 }

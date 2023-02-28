@@ -1,7 +1,7 @@
 ﻿using System;
 namespace NiceBike.Models
 {
-	public class OrderItem:Bike
+	public class OrderItem : AbstractBike
 	{
 		private Bike bike;
 
@@ -9,14 +9,11 @@ namespace NiceBike.Models
 		public OrderItem(Bike sBike, int sQt)
 		{
 			bike = sBike;
-			Id = bike.Id;
 			Name = bike.Name;
 			Description = bike.Description;
 			Price = bike.Price;
 			SizesAndColors = bike.SizesAndColors;
 			Image = bike.Image;
-			BuiltStock = bike.BuiltStock;
-			PartStock = bike.PartStock;
 			qt = sQt;
 		}
 		public void add(int aQt)

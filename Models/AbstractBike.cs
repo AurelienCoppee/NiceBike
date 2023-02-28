@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,15 @@ namespace NiceBike.Models;
 
 public abstract class AbstractBike
 {
-    public abstract int IdCounter { get; }
-    
-    public abstract string Description { get; }
-    public abstract double Price { get; }
-    public abstract int Id { get; set; }
-    public abstract string Name { get; set; }
-    public abstract string SizesAndColors { get; set; }
-    public abstract string Image { get; set; }
+    private string description;
+    private decimal price;
+    private string name;
+    private string image;
+    private string sizesAndColors;
+    public string Description { get => description; set => description = value; }
+    public decimal Price { get => price; set => price = value; }
+    public string Name { get => name; set => name = value; }
+    public string Image { get => image; set => image = value; }
+    public string SizesAndColors { get => sizesAndColors; set => sizesAndColors = value; }
+
 }

@@ -18,11 +18,17 @@ namespace NiceBike.Models
         public void AddToCart(Bike bike)
         {
             OrderItem item = FindOrderItem(bike);
+            
             if (item == null)
             {
-                _items.Add(new OrderItem(bike, 1));
+                item = new OrderItem(bike, 1);
+                _items.Add(item);
             }
-            item.add(1);
+            else
+            {
+                item.add(1);
+            }
+
 
         }
 
