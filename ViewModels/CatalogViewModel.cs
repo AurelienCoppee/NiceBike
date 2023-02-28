@@ -68,7 +68,7 @@ namespace NiceBike
                 connection.Open();
                 Console.WriteLine("Connection successful!");
 
-                string queryString = "SELECT COUNT(*) FROM bike_list WHERE config = 1";
+                string queryString = "SELECT COUNT(*) FROM bike_list WHERE model = 'City'";
                 using (MySqlCommand command = new MySqlCommand(queryString, connection)) {
                         object result = command.ExecuteScalar();
                         int rowCount = Convert.ToInt32(result);
