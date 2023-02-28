@@ -40,6 +40,17 @@
                                 SemanticProperties.Description="{Binding Price}"
                                 FontSize="16"
                                 HorizontalOptions="Center" />
+                                <Label HorizontalOptions="Center">Stock</Label>
+                                <Label
+                                Text="{Binding PartStock}"
+                                SemanticProperties.Description="{Binding PartStock}"
+                                FontSize="16"
+                                HorizontalOptions="Center" />
+                                <Label
+                                Text="{Binding BuiltStock}"
+                                SemanticProperties.Description="{Binding BuiltStock}"
+                                FontSize="16"
+                                HorizontalOptions="Center" />
                                 <Label
                                 Text="{Binding SizesAndColors}"
                                 SemanticProperties.Description="{Binding SizesAndColors}"

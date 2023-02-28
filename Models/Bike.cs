@@ -17,6 +17,8 @@ namespace NiceBike.Models
         public decimal Price { get; set; }
         public string SizesAndColors { get; set; }
         public string Image { get; set; }
+        public int BuiltStock { get; set; }
+        public int PartStock { get; set; }
 
         public ICommand LearnMoreCommand { get; set; }
 

@@ -7,8 +7,8 @@ namespace NiceBike.ViewModels;
 
 public class CartViewModel : INotifyPropertyChanged
 {
-    private ObservableCollection<Bike> _cartItems;
-    public ObservableCollection<Bike> CartItems
+    private ObservableCollection<OrderItem> _cartItems;
+    public ObservableCollection<OrderItem> CartItems
     {
         get { return _cartItems; }
         set
@@ -20,13 +20,9 @@ public class CartViewModel : INotifyPropertyChanged
 
     public CartViewModel()
     {
-        CartItems = new ObservableCollection<Bike>();
+        CartItems = new ObservableCollection<OrderItem>();
     }
 
-    public void AddToCart(Bike bike)
-    {
-        CartItems.Add(bike);
-    }
 
     public event PropertyChangedEventHandler PropertyChanged;
     protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

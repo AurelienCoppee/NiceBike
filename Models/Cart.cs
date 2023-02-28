@@ -8,21 +8,37 @@ namespace NiceBike.Models
 {
     public class Cart
     {
-        private List<Bike> _items;
+        private List<OrderItem> _items;
 
         public Cart()
         {
-            _items = new List<Bike>();
+            _items = new List<OrderItem>();
         }
 
         public void AddToCart(Bike bike)
         {
-            _items.Add(bike);
+            OrderItem item = FindOrderItem(bike);
+            if (item == null)
+            {
+                _items.Add(new OrderItem(bike, 1));
+            }
+            item.add(1);
+
         }
 
         public void RemoveFromCart(Bike bike)
         {
-            _items.Remove(bike);
+            OrderItem item = FindOrderItem(bike);
+            if (item == null)
+            {
+                return;
+            }
+            _items.Remove(item);
+        }
+        public void RemoveSomeFromCart(Bike bike,int qt)
+        {
+            OrderItem item = FindOrderItem(bike);
+            item?.remove(qt);
         }
 
         public void ClearCart()
@@ -30,14 +46,26 @@ namespace NiceBike.Models
             _items.Clear();
         }
 
-        public IReadOnlyList<Bike> Items
+        public IReadOnlyList<OrderItem> Items
         {
             get { return _items.AsReadOnly(); }
         }
 
         public decimal TotalPrice
         {
-            get { return _items.Sum(b => b.Price); }
+            get { return _items.Sum(o => o.GetBike().Price); }
+        }
+        private OrderItem FindOrderItem(Bike bike)
+        {
+            foreach(OrderItem item in _items)
+            {
+                if (item.GetBike() == bike)
+                {
+                    return item;
+                }
+
+            }
+            return null;
         }
     }
 
