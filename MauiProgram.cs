@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 
 namespace NiceBike;
 
@@ -16,7 +17,7 @@ public static class MauiProgram
 			});
 
 #if DEBUG
-		builder.Logging.AddDebug();
+    builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();
