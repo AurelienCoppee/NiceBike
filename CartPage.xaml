@@ -1,23 +1,56 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBike.CartPage">
     <StackLayout>
-        <ListView ItemsSource="{Binding CartItems}">
+        <ListView ItemsSource="{Binding CartItems}" RowHeight="100">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="10">
-                            <Image Source="{Binding Image}" Aspect="AspectFit" WidthRequest="80" HeightRequest="80"/>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold"/>
-                                <Label Text="{Binding Price}" FontSize="Medium"/>
-                                <Label Text="{Binding SizesAndColors}" FontSize="Medium"/>
-                            </StackLayout>
-                        </StackLayout>
+
+                        <Grid Padding="20" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                   Grid.Row="0"
+                                   Grid.RowSpan="3"
+                                   Source="{Binding Image}"
+                                   Aspect="AspectFit"
+                                   />
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="{Binding Name}"
+                                   FontSize="Large"
+                                   FontAttributes="Bold"/>
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding Price}"
+                                   FontSize="Medium"/>
+                            <Label Grid.Row="2"
+                                   Grid.Column="1"
+                                   Text="{Binding SizesAndColors}"
+                                   FontSize="Medium"/>
+                            <Label Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding qt}"
+                                   FontSize="Medium"/>
+                            <Button Grid.Column="2"
+                                    Grid.Row="1"
+                                    Grid.RowSpan="2"
+                                    Text="x"/>
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Text="Place Order"/>
     </StackLayout>
 </ContentPage>

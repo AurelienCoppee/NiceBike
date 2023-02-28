@@ -18,6 +18,8 @@ public partial class CartPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        _viewModel.CartItems = new ObservableCollection<Bike>(App.Cart.Items);
+        ObservableCollection<OrderItem> orderItems = new ObservableCollection<OrderItem>(App.Cart.Items);
+
+        _viewModel.CartItems = orderItems;
     }
 }
