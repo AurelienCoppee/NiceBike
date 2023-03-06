@@ -26,6 +26,24 @@ public class Database
         int rowCount = Convert.ToInt32(result);
         return rowCount;
     }
+    public void UpdateColumnById<T>(string tableName, string columnName, T value, int id)
+    {
+        using MySqlConnection connection = new MySqlConnection(connectionString);
+        connection.Open();
+        if (typeof(T) == typeof(string))
+        {
+            value = (T)(object)($"'{value}'");
+        }
+        using MySqlCommand command = new MySqlCommand($"UPDATE {tableName} SET {columnName}={value} WHERE id={id}", connection);
+        command.ExecuteNonQuery();
+    }
+    public void RemoveRowById(string tableName, int id)
+    {
+        using MySqlConnection connection = new MySqlConnection(connectionString);
+        connection.Open();
+        using MySqlCommand command = new MySqlCommand($"DELETE FROM {tableName} WHERE id = {id}", connection);
+        command.ExecuteNonQuery();
+    }
     public void CloseConnection()
     {
         connection.Close();
