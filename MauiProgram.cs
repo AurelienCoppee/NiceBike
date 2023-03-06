@@ -1,11 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 using MySql.Data.MySqlClient;
+using NiceBike.Models;
 
 namespace NiceBike;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
+    public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
@@ -20,6 +21,6 @@ public static class MauiProgram
     builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
+        return builder.Build();
 	}
 }

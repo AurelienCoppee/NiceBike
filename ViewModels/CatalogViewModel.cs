@@ -62,21 +62,8 @@ namespace NiceBike
         }
         private int GetStockBuilt(String name)
         {
-            string connectionString = "server=pat.infolab.ecam.be;port=63314;database=NiceBike;user=admin;password=password;";
-
-            MySqlConnection connection = new MySqlConnection(connectionString);
-
-                connection.Open();
-                Console.WriteLine("Connection successful!");
-
-                string queryString = "SELECT COUNT(*) FROM bike_list WHERE model = '${name}'";
-                using (MySqlCommand command = new MySqlCommand(queryString, connection)) {
-                        object result = command.ExecuteScalar();
-                        int rowCount = Convert.ToInt32(result);
-                        Console.WriteLine("Row count: " + rowCount);
-                connection.Close();
-                return rowCount;
-            }
+            App.db.OpenConnection();
+            return App.db.NumberOfRowsWithValue("bike_list", "model", name);
             }
         private int GetStockParts()
         {
@@ -90,7 +77,7 @@ namespace NiceBike
             int leastBuildable = 1000000;
             foreach ((string, int) part in partList)
             {
-                int avQuentity = 20;//Query the db with the name of the part
+                int avQuentity = App.db.NumberOfRowsWithValue("parts", "name", part.Item1);
                 avQuentity = avQuentity / part.Item2;
                 if (avQuentity< leastBuildable)
                 {
