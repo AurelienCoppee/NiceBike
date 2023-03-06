@@ -69,6 +69,12 @@
 	  <MauiXaml Update="CartPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="StockManagment.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="DbPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

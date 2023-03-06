@@ -1,6 +1,7 @@
 using NiceBike.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Xml.Linq;
 
 namespace NiceBike
 {
@@ -30,7 +31,7 @@ namespace NiceBike
                     "City Bike",
                     "bike.jpg",
                     GetStockParts(),
-                    GetStockBuilt()
+                    GetStockBuilt("City Bike")
                 ),
                 new Bike(
                     "A mountain bike with wider tires and more grooved, and adapted mudguards",
@@ -38,7 +39,7 @@ namespace NiceBike
                     "Explorer Bike",
                     "bike.jpg",
                     GetStockParts(),
-                    GetStockBuilt()
+                    GetStockBuilt("Explorer Bike")
                 ),
                 new Bike(
                     "A mountain bike with reinforced frame, no luggage rack, mudguards or light",
@@ -46,7 +47,7 @@ namespace NiceBike
                     "Adventure Bike",
                     "bike.jpg",
                     GetStockParts(),
-                    GetStockBuilt()
+                    GetStockBuilt("Adventure Bike")
                 )
             };
 
@@ -58,10 +59,10 @@ namespace NiceBike
                 });
             }
         }
-        private int GetStockBuilt()
+        private int GetStockBuilt(String name)
         {
             App.db.OpenConnection();
-            return App.db.NumberOfRowsWithValue("bike_list", "model", "City");
+            return App.db.NumberOfRowsWithValue("bike_list", "model", name);
             }
         private int GetStockParts()
         {
@@ -75,7 +76,7 @@ namespace NiceBike
             int leastBuildable = 1000000;
             foreach ((string, int) part in partList)
             {
-                int avQuentity = 20;//Query the db with the name of the part
+                int avQuentity = App.db.NumberOfRowsWithValue("parts", "name", part.Item1);
                 avQuentity = avQuentity / part.Item2;
                 if (avQuentity< leastBuildable)
                 {
