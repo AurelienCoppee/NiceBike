@@ -1,6 +1,10 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
+using TestNiceBike.Models;
+
 namespace NiceBike.Models
 {
 	public class DbController
@@ -14,12 +18,24 @@ namespace NiceBike.Models
 		}
 		public void bikeLoad()
 		{
-			DbObject bike = new DbObject();
-			bike.id = 1;
-			bike.name = "bob";
-			bike.stock = 0;
+                using MySqlConnection connection = new(App.db.connectionString);
+                connection.Open();
+                string queryString = "SELECT * FROM bike_list";
+                using MySqlCommand command = new(queryString, connection);
+                using MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                DbObject bike = new()
+                    {
+                    id = reader.GetInt32("idbike_list"),
+                        //order = reader.GetInt32("order"),
+                        name = reader.GetString("model"),
+                        //Config = reader.GetString("config"),
+                        //status = reader.GetString("status"),
+                    };
+                    _bikes.Add(bike);
+                }
 
-			_bikes.Add(bike);
 		}
 		public void bikeDump()
 		{
@@ -27,12 +43,25 @@ namespace NiceBike.Models
 		}
 		public void partLoad()
 		{
-            DbObject bike = new DbObject();
-            bike.id = 1;
-            bike.name = "bob";
-            bike.stock = 0;
-
-            _bikeParts.Add(bike);
+            using MySqlConnection connection = new(App.db.connectionString);
+            connection.Open();
+            string queryString = "SELECT * FROM bike_list";
+            using MySqlCommand command = new(queryString, connection);
+            using MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                DbObject bike = new()
+                {
+                    id = reader.GetInt32("idparts"),
+                    name = reader.GetString("part"),
+                    //supplier = reader.GetInt32("supplier"),
+                    //supplier_ref = reader.GetInt32("supplier_ref"),
+                    stock = reader.GetInt32("quantity"),
+                    //min_quantity = reader.GetInt32("min_quantity"),
+                    //unti_price = reader.GetDecimal("unit_price"),
+                };
+                _bikeParts.Add(bike);
+            }
 
         }
 		public void partDump()

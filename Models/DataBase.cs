@@ -4,7 +4,7 @@ namespace NiceBike.Models;
 
 public class Database
 {
-    private readonly string connectionString = "server=pat.infolab.ecam.be;port=63314;database=NiceBike;user=admin;password=password;";
+    public readonly string connectionString = "server=pat.infolab.ecam.be;port=63314;database=NiceBike;user=admin;password=password;";
     public MySqlConnection connection;
     public void OpenConnection()
     {
@@ -28,20 +28,20 @@ public class Database
     }
     public void UpdateColumnById<T>(string tableName, string columnName, T value, int id)
     {
-        using MySqlConnection connection = new MySqlConnection(connectionString);
+        using MySqlConnection connection = new(connectionString);
         connection.Open();
         if (typeof(T) == typeof(string))
         {
             value = (T)(object)($"'{value}'");
         }
-        using MySqlCommand command = new MySqlCommand($"UPDATE {tableName} SET {columnName}={value} WHERE id={id}", connection);
+        using MySqlCommand command = new($"UPDATE {tableName} SET {columnName}={value} WHERE id={id}", connection);
         command.ExecuteNonQuery();
     }
     public void RemoveRowById(string tableName, int id)
     {
-        using MySqlConnection connection = new MySqlConnection(connectionString);
+        using MySqlConnection connection = new(connectionString);
         connection.Open();
-        using MySqlCommand command = new MySqlCommand($"DELETE FROM {tableName} WHERE id = {id}", connection);
+        using MySqlCommand command = new($"DELETE FROM {tableName} WHERE id = {id}", connection);
         command.ExecuteNonQuery();
     }
     public void CloseConnection()
