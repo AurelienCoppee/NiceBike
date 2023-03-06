@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 namespace NiceBike.Models
 {
 	public class DbController
 	{
-		public List<DbObject> bikes;
-        public List<DbObject> bikeParts;
+		private List<DbObject> _bikes;
+        private List<DbObject> _bikeParts;
+		public ObservableCollection<DbObject> bikes;
+		public ObservableCollection<DbObject> bikeParts;
         public DbController()
 		{
 		}
@@ -24,6 +28,16 @@ namespace NiceBike.Models
 		{
 
 		}
-	}
+		public void load()
+		{
+			bikeLoad();
+			partLoad();
+		}
+		public void list()
+		{
+			bikes = new ObservableCollection<DbObject>(_bikes);
+            bikeParts = new ObservableCollection<DbObject>(_bikeParts);
+        }
+    }
 }
 

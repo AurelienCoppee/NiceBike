@@ -12,7 +12,7 @@
 
             <HorizontalStackLayout>
                 <Button Text="Cart" Clicked="GoToCart"/>
-
+                <Button Text="Stock" Clicked="GoToStock"/>
             </HorizontalStackLayout>
 
 

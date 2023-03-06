@@ -9,11 +9,22 @@ namespace NiceBike.ViewModels;
 public class DataBaseControlViewModel : ContentPage
 {
     public ObservableCollection<DbObject> bikes;
+    public ObservableCollection<DbObject> bikeParts;
+    public DbController dbc;
 
 
     public DataBaseControlViewModel()
 	{
         bikes = new ObservableCollection<DbObject>();
+        bikeParts = new ObservableCollection<DbObject>();
+        dbc = new DbController();
+    }
+    public void load()
+    {
+        dbc.load();
+        dbc.list();
+        bikes = dbc.bikes;
+        bikeParts = dbc.bikeParts;
     }
     
     public new  event PropertyChangedEventHandler  PropertyChanged;

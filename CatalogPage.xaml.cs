@@ -37,6 +37,10 @@ namespace NiceBike
         {
             Application.Current.MainPage.Navigation.PushAsync(new CartPage());
         }
+        private void GoToStock(object sender, EventArgs e)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new DbPage());
+        }
 
     }
 }
