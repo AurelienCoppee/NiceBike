@@ -31,7 +31,7 @@ namespace NiceBike
                     "City Bike",
                     "bike.jpg",
                     GetStockParts(),
-                    GetStockBuilt()
+                    GetStockBuilt("City Bike")
                 ),
                 new Bike(
                     "A mountain bike with wider tires and more grooved, and adapted mudguards",
@@ -39,7 +39,7 @@ namespace NiceBike
                     "Explorer Bike",
                     "bike.jpg",
                     GetStockParts(),
-                    GetStockBuilt()
+                    GetStockBuilt("Explorer Bike")
                 ),
                 new Bike(
                     "A mountain bike with reinforced frame, no luggage rack, mudguards or light",
@@ -47,7 +47,7 @@ namespace NiceBike
                     "Adventure Bike",
                     "bike.jpg",
                     GetStockParts(),
-                    GetStockBuilt()
+                    GetStockBuilt("Adventure Bike")
                 )
             };
 
@@ -59,7 +59,7 @@ namespace NiceBike
                 });
             }
         }
-        private int GetStockBuilt()
+        private int GetStockBuilt(String name)
         {
             string connectionString = "server=pat.infolab.ecam.be;port=63314;database=NiceBike;user=admin;password=password;";
 
@@ -68,7 +68,7 @@ namespace NiceBike
                 connection.Open();
                 Console.WriteLine("Connection successful!");
 
-                string queryString = "SELECT COUNT(*) FROM bike_list WHERE config = 1";
+                string queryString = "SELECT COUNT(*) FROM bike_list WHERE model = '${name}'";
                 using (MySqlCommand command = new MySqlCommand(queryString, connection)) {
                         object result = command.ExecuteScalar();
                         int rowCount = Convert.ToInt32(result);
