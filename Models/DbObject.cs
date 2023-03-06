@@ -11,7 +11,7 @@ namespace NiceBike.Models
 		public List<Object> details;
 		public void update(string key, string value)
 		{
-			//App.db.UpdateColumnById(tableName, columnName, T value, id);
+			App.db.UpdateColumnById(tableName, key, value, id);
         }
 		public void yeet()
 		{
