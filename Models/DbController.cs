@@ -66,7 +66,7 @@ namespace NiceBike.Models
                     //supplier_ref = reader.GetInt32("supplier_ref"),
                     stock = reader.GetInt32("quantity"),
                     //min_quantity = reader.GetInt32("min_quantity"),
-                    //unti_price = reader.GetDecimal("unit_price"),
+                    //unit_price = reader.GetDecimal("unit_price"),
                 };
                 _bikeParts.Add(bike);
             }
