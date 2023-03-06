@@ -6,12 +6,13 @@ namespace NiceBike;
 
 public partial class DbPage : ContentPage
 {
-    public DataBaseControlViewModel dbcvm;
+    private DataBaseControlViewModel _dbcvm;
 	public DbPage()
 	{
 		InitializeComponent();
-        dbcvm = new DataBaseControlViewModel();
-        BindingContext = dbcvm;
+        _dbcvm = new DataBaseControlViewModel();
+        _dbcvm.load();
+        BindingContext = _dbcvm;
 	}
 
     private void AddPart(object sender, EventArgs e)
@@ -46,7 +47,5 @@ public partial class DbPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-
-        dbcvm.load();
     }
 }

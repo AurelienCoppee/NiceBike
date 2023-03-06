@@ -6,10 +6,29 @@ using System.Collections.ObjectModel;
 
 namespace NiceBike.ViewModels;
 
-public class DataBaseControlViewModel : ContentPage
+public class DataBaseControlViewModel : INotifyPropertyChanged
 {
-    public ObservableCollection<DbObject> bikes;
-    public ObservableCollection<DbObject> bikeParts;
+    private ObservableCollection<DbObject> _bikes;
+    public ObservableCollection<DbObject> bikes
+    {
+        get { return _bikes; }
+        set
+        {
+            _bikes = value;
+            OnPropertyChanged();
+        }
+    }
+    private ObservableCollection<DbObject> _bikeParts;
+    public ObservableCollection<DbObject> bikeParts
+    {
+        get { return _bikeParts; }
+        set
+        {
+            _bikeParts = value;
+            OnPropertyChanged();
+        }
+    }
+    
     public DbController dbc;
 
 
@@ -27,8 +46,8 @@ public class DataBaseControlViewModel : ContentPage
         bikeParts = dbc.bikeParts;
     }
     
-    public new  event PropertyChangedEventHandler  PropertyChanged;
-    protected new virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public   event PropertyChangedEventHandler  PropertyChanged;
+    protected  virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

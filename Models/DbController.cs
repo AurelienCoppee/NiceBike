@@ -15,9 +15,14 @@ namespace NiceBike.Models
 		public ObservableCollection<DbObject> bikeParts;
         public DbController()
 		{
+			_bikes = new List<DbObject>();
+			_bikeParts = new List<DbObject>();
+			bikes = new ObservableCollection<DbObject>();
+			bikeParts = new ObservableCollection<DbObject>();
 		}
 		public void bikeLoad()
 		{
+
                 using MySqlConnection connection = new(App.db.connectionString);
                 connection.Open();
                 string queryString = "SELECT * FROM bike_list";
@@ -36,6 +41,7 @@ namespace NiceBike.Models
                     _bikes.Add(bike);
                 }
 
+
 		}
 		public void bikeDump()
 		{
@@ -43,6 +49,7 @@ namespace NiceBike.Models
 		}
 		public void partLoad()
 		{
+
             using MySqlConnection connection = new(App.db.connectionString);
             connection.Open();
             string queryString = "SELECT * FROM bike_list";
@@ -63,6 +70,7 @@ namespace NiceBike.Models
                 _bikeParts.Add(bike);
             }
 
+
         }
 		public void partDump()
 		{
@@ -75,8 +83,11 @@ namespace NiceBike.Models
 		}
 		public void list()
 		{
-			bikes = new ObservableCollection<DbObject>(_bikes);
+            
+
+            bikes = new ObservableCollection<DbObject>(_bikes);
             bikeParts = new ObservableCollection<DbObject>(_bikeParts);
+			
         }
     }
 }
