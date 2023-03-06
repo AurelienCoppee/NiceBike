@@ -65,69 +65,40 @@ internal class BikeManager
         bikeModels["Explorer"]["ForkSize"].Add("L");
 
         bikeModels["Explorer"].Add("RimSize", new List<string>());
-
         bikeModels["Explorer"]["RimSize"].Add("S");
-
         bikeModels["Explorer"]["RimSize"].Add("L");
 
         bikeModels["Explorer"].Add("TyreSize", new List<string>());
-
         bikeModels["Explorer"]["TyreSize"].Add("S");
-
         bikeModels["Explorer"]["TyreSize"].Add("L");
 
-
         bikeModels["Explorer"].Add("LargeTyreSize", new List<string>());
-
         bikeModels["Explorer"]["LargeTyreSize"].Add("S");
-
         bikeModels["Explorer"]["LargeTyreSize"].Add("L");
 
 
         bikeModels.Add("Adventure", new Dictionary<string, List<string>>());
 
-        bikeModels["Adventure"].Add("StrengthenedFrame", new List<string>());
-        bikeModels["Adventure"]["StrengthenedFrame"].Add("1");
+        bikeModels["Adventure"].Add("StrengthenedFrameSize", new List<string>());
+        bikeModels["Adventure"]["StrengthenedFrameSize"].Add("S");
+        bikeModels["Adventure"]["StrengthenedFrameSize"].Add("L");
 
-        bikeModels["Adventure"].Add("FrameSize", new List<string>());
-        bikeModels["Adventure"]["FrameSize"].Add("S");
-        bikeModels["Adventure"]["FrameSize"].Add("L");
-
-        bikeModels["Adventure"].Add("FrameColor", new List<string>());
-        bikeModels["Adventure"]["FrameColor"].Add("Red");
-        bikeModels["Adventure"]["FrameColor"].Add("Blue");
-        bikeModels["Adventure"]["FrameColor"].Add("Black");
-
-        bikeModels["Adventure"].Add("MudguardSize", new List<string>());
-        bikeModels["Adventure"]["MudguardSize"].Add("S");
-        bikeModels["Adventure"]["MudguardSize"].Add("L");
-
-        bikeModels["Adventure"].Add("MudguardColor", new List<string>());
-        bikeModels["Adventure"]["MudguardColor"].Add("Red");
-        bikeModels["Adventure"]["MudguardColor"].Add("Blue");
-        bikeModels["Adventure"]["MudguardColor"].Add("Black");
+        bikeModels["Adventure"].Add("StrengthenedFrameColor", new List<string>());
+        bikeModels["Adventure"]["StrengthenedFrameColor"].Add("Red");
+        bikeModels["Adventure"]["StrengthenedFrameColor"].Add("Blue");
+        bikeModels["Adventure"]["StrengthenedFrameColor"].Add("Black");
 
         bikeModels["Adventure"].Add("RimSize", new List<string>());
         bikeModels["Adventure"]["RimSize"].Add("S");
         bikeModels["Adventure"]["RimSize"].Add("L");
 
-        bikeModels["Adventure"].Add("TyreSize", new List<string>());
-        bikeModels["Adventure"]["TyreSize"].Add("S");
-        bikeModels["Adventure"]["TyreSize"].Add("L");
+        bikeModels["Adventure"].Add("LargeTyreSize", new List<string>());
+        bikeModels["Adventure"]["LargeTyreSize"].Add("S");
+        bikeModels["Adventure"]["LargeTyreSize"].Add("L");
 
-        bikeModels["Adventure"].Add("WheelHub", new List<string>());
-        bikeModels["Adventure"]["WheelHub"].Add("1");
-
-        // Notes:
-        // - City and Explorer bike models have information about frame size, fork size, mudguard size, mudguard color, and rim size.
-        // - City bike model has information about frame color.
-        // - Explorer bike model has information about large mudguard size, large mudguard color, large tire size, lighting, luggage carrier, pedals kit, rear sprocket, and reflector.
-        // - Adventure bike model has information about strengthened bike frame, frame size, frame color, mudguard size, mudguard color, rim size, tyre size, and wheel hub.
-
-
-
-
-
+        bikeModels["Adventure"].Add("ForkSize", new List<string>());
+        bikeModels["Adventure"]["ForkSize"].Add("S");
+        bikeModels["Adventure"]["ForkSize"].Add("L");
 
     }
 

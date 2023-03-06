@@ -17,7 +17,7 @@ namespace NiceBike
         {
             var button = sender as Button;
             
-            var bike = button?.BindingContext as Bike;
+            var bike = button?.BindingContext as CatalogBike;
             if (bike != null)
             {
                 App.Cart.AddToCart(bike);

@@ -8,8 +8,7 @@ namespace NiceBike.Models;
 
 internal class BikeHelper
 {
-    public AbstractBike bikeMaker(string bikeModel, string bikeSize, string bikeColor, List<Accessory> accessories = null)
+/*    public AbstractBike bikeMaker(string bikeModel, string bikeSize, string bikeColor)
     {
-        
-    }
+    }*/
 }

@@ -1,21 +1,19 @@
 ﻿using System;
 namespace NiceBike.Models
 {
-	public class OrderItem : AbstractBike
+	public class OrderItem : AbstractBikeDecorator
 	{
-		private Bike bike;
+		private CatalogBike bike;
+
+        public decimal Price { get; set; }
 
         private int qt;
-		public OrderItem(Bike sBike, int sQt)
-		{
-			bike = sBike;
-			Name = bike.Name;
-			Description = bike.Description;
-			Price = bike.Price;
-			SizesAndColors = bike.SizesAndColors;
-			Image = bike.Image;
-			qt = sQt;
-		}
+        public OrderItem(CatalogBike sBike, int sQt) : base(sBike)
+        {
+            bike = (CatalogBike)sBike;
+            this.Price = sBike.Price;
+            qt = sQt;
+        }
 		public void add(int aQt)
 		{
 			qt += aQt;
@@ -30,7 +28,7 @@ namespace NiceBike.Models
 			}
             Price = qt * bike.Price;
         }
-		public Bike GetBike()
+		public CatalogBike GetBike()
 		{
 			return bike;
 		}

@@ -2,6 +2,7 @@ using NiceBike.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using MySql.Data.MySqlClient;
+using TestNiceBike.Models;
 
 namespace NiceBike
 {
@@ -9,8 +10,8 @@ namespace NiceBike
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ObservableCollection<Bike> bikes;
-        public ObservableCollection<Bike> Bikes
+        private ObservableCollection<CatalogBike> bikes;
+        public ObservableCollection<CatalogBike> Bikes
         {
             get { return bikes; }
             set
@@ -23,28 +24,28 @@ namespace NiceBike
         public CatalogViewModel()
         {
             // Initialize the Bikes collection with some sample data
-            Bikes = new ObservableCollection<Bike>
+            Bikes = new ObservableCollection<CatalogBike>
             {
-                new Bike(
+                new CatalogBike(
+                    new Bike("City Bike"),
                     "Simple bike for city travels with all needed parts like mudguards and lights",
                     499.99M,
-                    "City Bike",
                     "bike.jpg",
                     GetStockParts(),
                     GetStockBuilt("City Bike")
                 ),
-                new Bike(
+                new CatalogBike(
+                    new Bike("Explorer Bike"),
                     "A mountain bike with wider tires and more grooved, and adapted mudguards",
                     499.99M,
-                    "Explorer Bike",
                     "bike.jpg",
                     GetStockParts(),
                     GetStockBuilt("Explorer Bike")
                 ),
-                new Bike(
+                new CatalogBike(
+                    new Bike("Adventure Bike"),
                     "A mountain bike with reinforced frame, no luggage rack, mudguards or light",
                     499.99M,
-                    "Adventure Bike",
                     "bike.jpg",
                     GetStockParts(),
                     GetStockBuilt("Adventure Bike")
