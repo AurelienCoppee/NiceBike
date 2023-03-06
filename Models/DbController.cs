@@ -84,8 +84,6 @@ namespace NiceBike.Models
 		}
 		public void list()
 		{
-            
-
             bikes = new ObservableCollection<DbObject>(_bikes);
             bikeParts = new ObservableCollection<DbObject>(_bikeParts);
 			
