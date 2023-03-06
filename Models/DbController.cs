@@ -31,12 +31,13 @@ namespace NiceBike.Models
                 while (reader.Read())
                 {
                 DbObject bike = new()
-                    {
+                {
                     id = reader.GetInt32("idbike_list"),
-                        //order = reader.GetInt32("order"),
-                        name = reader.GetString("model"),
-                        //Config = reader.GetString("config"),
-                        //status = reader.GetString("status"),
+                    //order = reader.GetInt32("order"),
+                    name = reader.GetString("model"),
+                    //Config = reader.GetString("config"),
+                    //status = reader.GetString("status"),
+                    stock = 1,
                     };
                     _bikes.Add(bike);
                 }
@@ -52,7 +53,7 @@ namespace NiceBike.Models
 
             using MySqlConnection connection = new(App.db.connectionString);
             connection.Open();
-            string queryString = "SELECT * FROM bike_list";
+            string queryString = "SELECT * FROM parts_stock";
             using MySqlCommand command = new(queryString, connection);
             using MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
