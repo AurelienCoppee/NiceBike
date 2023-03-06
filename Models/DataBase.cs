@@ -35,12 +35,12 @@ public class Database
         using MySqlCommand command = new($"DELETE FROM {tableName} WHERE id = {id}", connection);
         command.ExecuteNonQuery();
     }
-    public void AddRow<T>(string tableName, string columnName, T value)
+    public void AddRow<T>(string tableName, T value)
     {
         using MySqlConnection connection = new(connectionString);
         connection.Open();
         string valueString = value is string ? $"'{value}'" : value.ToString();
-        using MySqlCommand command = new($"INSERT INTO {tableName} ({columnName}) VALUES ({valueString})", connection);
+        using MySqlCommand command = new($"INSERT INTO {tableName} VALUES ({valueString})", connection);
         command.ExecuteNonQuery();
     }
 }
