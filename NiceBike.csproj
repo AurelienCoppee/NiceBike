@@ -72,6 +72,9 @@
 	  <MauiXaml Update="StockManagment.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="DbPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
