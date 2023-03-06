@@ -35,14 +35,11 @@
                                    Text="{Binding stock}"
                                    FontSize="20"/>
 
-                            <Button Grid.Column="2"
-                                    Grid.Row="1"
-                                    Clicked="Add"
-                                    Text="+"/>
+
                             <Button Grid.Column="2"
                                     Grid.Row="2"
-                                    Clicked="Remove"
-                                    Text="-"/>
+                                    Clicked="RemoveBike"
+                                    Text="x"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
@@ -83,11 +80,11 @@
 
                             <Button Grid.Column="2"
                                     Grid.Row="1"
-                                    Clicked="Add"
+                                    Clicked="AddPart"
                                     Text="+"/>
                             <Button Grid.Column="2"
                                     Grid.Row="2"
-                                    Clicked="Remove"
+                                    Clicked="RemovePart"
                                     Text="-"/>
                         </Grid>
                     </ViewCell>

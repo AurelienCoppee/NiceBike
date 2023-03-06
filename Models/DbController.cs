@@ -14,7 +14,12 @@ namespace NiceBike.Models
 		}
 		public void bikeLoad()
 		{
+			DbObject bike = new DbObject();
+			bike.id = 1;
+			bike.name = "bob";
+			bike.stock = 0;
 
+			_bikes.Add(bike);
 		}
 		public void bikeDump()
 		{
@@ -22,8 +27,14 @@ namespace NiceBike.Models
 		}
 		public void partLoad()
 		{
+            DbObject bike = new DbObject();
+            bike.id = 1;
+            bike.name = "bob";
+            bike.stock = 0;
 
-		}
+            _bikeParts.Add(bike);
+
+        }
 		public void partDump()
 		{
 

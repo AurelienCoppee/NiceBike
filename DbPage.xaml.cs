@@ -14,7 +14,7 @@ public partial class DbPage : ContentPage
         BindingContext = dbcvm;
 	}
 
-    private void Add(object sender, EventArgs e)
+    private void AddPart(object sender, EventArgs e)
     {
         var button = sender as Button;
 
@@ -23,12 +23,23 @@ public partial class DbPage : ContentPage
 
     }
 
-    private void Remove(object sender, EventArgs e)
+    private void RemovePart(object sender, EventArgs e)
     {
         var button = sender as Button;
 
         var Obj = button?.BindingContext as DbObject;
         Obj.update("stock", (Obj.stock - 1).ToString());
+
+    }
+
+
+
+    private void RemoveBike(object sender, EventArgs e)
+    {
+        var button = sender as Button;
+
+        var Obj = button?.BindingContext as DbObject;
+        Obj.yeet();
 
     }
 

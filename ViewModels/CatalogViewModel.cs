@@ -64,7 +64,7 @@ namespace NiceBike
         {
             App.db.OpenConnection();
             return App.db.NumberOfRowsWithValue("bike_list", "model", name);
-            }
+        }
         private int GetStockParts()
         {
             List<(string,int)> partList = new List<(string,int)>
