@@ -27,28 +27,28 @@ namespace NiceBike
             Bikes = new ObservableCollection<CatalogBike>
             {
                 new CatalogBike(
-                    new Bike("City Bike"),
+                    new Bike("City"),
                     "Simple bike for city travels with all needed parts like mudguards and lights",
                     499.99M,
                     "bike.jpg",
                     GetStockParts(),
-                    GetStockBuilt("City Bike")
+                    GetStockBuilt("City")
                 ),
                 new CatalogBike(
-                    new Bike("Explorer Bike"),
+                    new Bike("Explorer"),
                     "A mountain bike with wider tires and more grooved, and adapted mudguards",
                     499.99M,
                     "bike.jpg",
                     GetStockParts(),
-                    GetStockBuilt("Explorer Bike")
+                    GetStockBuilt("Explorer")
                 ),
                 new CatalogBike(
-                    new Bike("Adventure Bike"),
+                    new Bike("Adventure"),
                     "A mountain bike with reinforced frame, no luggage rack, mudguards or light",
                     499.99M,
                     "bike.jpg",
                     GetStockParts(),
-                    GetStockBuilt("Adventure Bike")
+                    GetStockBuilt("Adventure")
                 )
             };
 

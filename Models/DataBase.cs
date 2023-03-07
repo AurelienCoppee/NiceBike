@@ -40,4 +40,11 @@ public class Database
         using MySqlCommand command = new($"INSERT INTO {tableName} VALUES ({valueString})", connection);
         command.ExecuteNonQuery();
     }
+    public void GetRowByValue<T>(string tableName, string columnName, T value) {
+        using MySqlConnection connection = new(connectionString);
+        connection.Open();
+        string valueString = value is string ? $"'{value}'" : value.ToString();
+        using MySqlCommand command = new($"DELETE FROM {tableName} WHERE {columnName} = {value}", connection);
+        command.ExecuteNonQuery();
+    }
 }

@@ -22,7 +22,6 @@ namespace NiceBike.Models
 		}
 		public void bikeLoad()
 		{
-
                 using MySqlConnection connection = new(App.db.connectionString);
                 connection.Open();
                 string queryString = "SELECT * FROM bike_list";
@@ -41,8 +40,6 @@ namespace NiceBike.Models
                     };
                     _bikes.Add(bike);
                 }
-
-
 		}
 		public void bikeDump()
 		{
@@ -70,8 +67,6 @@ namespace NiceBike.Models
                 };
                 _bikeParts.Add(bike);
             }
-
-
         }
 		public void partDump()
 		{
