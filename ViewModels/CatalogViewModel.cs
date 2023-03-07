@@ -62,7 +62,6 @@ namespace NiceBike
         }
         private int GetStockBuilt(String name)
         {
-            App.db.OpenConnection();
             return App.db.NumberOfRowsWithValue("bike_list", "model", name);
         }
         private int GetStockParts()

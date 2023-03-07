@@ -5,10 +5,7 @@ namespace NiceBike.Models;
 public class Database
 {
     public readonly string connectionString = "server=pat.infolab.ecam.be;port=63314;database=NiceBike;user=admin;password=password;";
-    public Database(string connectionString)
-    {
-        this.connectionString = connectionString;
-    }
+
     public int NumberOfRowsWithValue<T>(string tableName, string columnName, T columnValue)
     {
         using MySqlConnection connection = new(connectionString);
