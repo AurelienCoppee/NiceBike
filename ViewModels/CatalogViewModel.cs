@@ -30,7 +30,7 @@ namespace NiceBike
                     new Bike("City"),
                     "Simple bike for city travels with all needed parts like mudguards and lights",
                     499.99M,
-                    "bike.jpg",
+                    "city.jpg",
                     GetStockParts(),
                     GetStockBuilt("City")
                 ),
@@ -38,7 +38,7 @@ namespace NiceBike
                     new Bike("Explorer"),
                     "A mountain bike with wider tires and more grooved, and adapted mudguards",
                     499.99M,
-                    "bike.jpg",
+                    "explorer.jpg",
                     GetStockParts(),
                     GetStockBuilt("Explorer")
                 ),
@@ -46,7 +46,7 @@ namespace NiceBike
                     new Bike("Adventure"),
                     "A mountain bike with reinforced frame, no luggage rack, mudguards or light",
                     499.99M,
-                    "bike.jpg",
+                    "adventure.jpg",
                     GetStockParts(),
                     GetStockBuilt("Adventure")
                 )
