@@ -46,7 +46,6 @@ public class Database
         string primaryKeyValueString = primaryKeyValue is string ? $"'{primaryKeyValue}'" : primaryKeyValue.ToString();
         using MySqlCommand command = new($"SELECT {columnName} FROM {tableName} WHERE {primaryKeyColumnName} = {primaryKeyValueString}", connection);
         object result = command.ExecuteScalar();
-        System.Diagnostics.Debug.WriteLine(result);
         return result?.ToString();
     }
 }

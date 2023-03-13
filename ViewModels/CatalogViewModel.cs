@@ -76,11 +76,11 @@ namespace NiceBike
             int leastBuildable = 1000000;
             foreach ((string, int) part in partList)
             {
-                int avQuentity = App.db.NumberOfRowsWithValue("parts", "name", part.Item1);
-                avQuentity = avQuentity / part.Item2;
-                if (avQuentity< leastBuildable)
+                int avQuantity = App.db.NumberOfRowsWithValue("parts", "name", part.Item1);
+                avQuantity = avQuantity / part.Item2;
+                if (avQuantity< leastBuildable)
                 {
-                    leastBuildable = avQuentity;
+                    leastBuildable = avQuantity;
                 }
             }
             return leastBuildable;

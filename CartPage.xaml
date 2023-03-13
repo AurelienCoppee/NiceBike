@@ -51,6 +51,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="Place Order"/>
+        <Button Text="Place Order"
+                Clicked="Order"/>
     </StackLayout>
 </ContentPage>
