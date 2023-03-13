@@ -1,55 +1,94 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBike.CatalogPage">
 
     <ScrollView>
         <VerticalStackLayout
-        Spacing="25"
-        Padding="30,0"
-        VerticalOptions="Center">
 
-            <Label
-            Text="NiceBike Catalog"
-            SemanticProperties.HeadingLevel="Level1"
-            FontSize="32"
-            HorizontalOptions="Center" />
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+
+            <HorizontalStackLayout>
+                <Button Text="Cart" Clicked="GoToCart"/>
+                <Button Text="Stock" Clicked="GoToStock"/>
+            </HorizontalStackLayout>
+
 
             <CollectionView
             ItemsSource="{Binding Bikes}">
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Image
-                            Source="{Binding Image}"
-                            Aspect="AspectFill" />
-                            <StackLayout BackgroundColor="#AA000000" Padding="10"
-                         VerticalOptions="End" HeightRequest="200">
+                                Source="{Binding Image}"
+                                Aspect="AspectFill"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand" />
+                            <StackLayout 
+                                BackgroundColor="Transparent"
+                                Padding="10"
+                                VerticalOptions="Start"
+                                HorizontalOptions="FillAndExpand">
                                 <Label
-                                Text="{Binding Name}"
-                                SemanticProperties.HeadingLevel="Level2"
-                                FontSize="20"
-                                HorizontalOptions="Center" />
+                                    Text="{Binding Name}"
+                                    TextColor="Black"
+                                    SemanticProperties.HeadingLevel="Level1"
+                                    FontSize="30"
+                                    FontFamily="Franklin Gothic"
+                                    HorizontalOptions="Center"
+                                    Padding="50"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                            <StackLayout 
+                                BackgroundColor="#AA000000"
+                                Padding="10"
+                                VerticalOptions="End"
+                                HorizontalOptions="FillAndExpand">
+                                
                                 <Label
-                                Text="{Binding Description}"
-                                SemanticProperties.Description="{Binding Description}"
-                                FontSize="16"
-                                HorizontalOptions="Center" />
+                                    Text="{Binding Description}"
+                                    SemanticProperties.Description="{Binding Description}"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="CenterAndExpand" />
                                 <Label
-                                Text="{Binding Price}"
-                                SemanticProperties.Description="{Binding Price}"
-                                FontSize="16"
-                                HorizontalOptions="Center" />
+                                    Text="{Binding Price, StringFormat='Price : {0:F0} €'}"
+                                    SemanticProperties.Description="{Binding Price}"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="CenterAndExpand" />
                                 <Label
-                                Text="{Binding SizesAndColors}"
-                                SemanticProperties.Description="{Binding SizesAndColors}"
-                                FontSize="16"
-                                HorizontalOptions="Center" />
+                                    Text="{Binding PartStock, StringFormat='Part Stock : {0:F0}'}"
+                                    SemanticProperties.Description="{Binding PartStock}"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Label
+                                    Text="{Binding BuiltStock, StringFormat='Built stock : {0:F0}'}"
+                                    SemanticProperties.Description="{Binding BuiltStock}"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Text="{Binding SizesAndColors}"
+                                    SemanticProperties.Description="{Binding SizesAndColors}"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"/>
                                 <Button
-                                Text="Add to Cart"
-                                Clicked="OnAddToCartClicked"
-                                CommandParameter="{Binding .}"
-                                HorizontalOptions="Center" />
+                                    Text="Add to Cart"
+                                    Clicked="AddToCart"
+                                    CommandParameter="{Binding .}"
+                                    HorizontalOptions="Center"
+                                     />
+                                <Button 
+                                    Text="Learn More"
+                                    Command="{Binding LearnMoreCommand}"
+                                    BackgroundColor="White"
+                                    TextColor="Black"
+                                    HorizontalOptions="Center" />
                             </StackLayout>
                         </Grid>
                     </DataTemplate>
@@ -57,6 +96,4 @@
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
-
-
 </ContentPage>
