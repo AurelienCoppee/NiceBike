@@ -40,11 +40,13 @@ public class Database
         using MySqlCommand command = new($"INSERT INTO {tableName} VALUES ({valueString})", connection);
         command.ExecuteNonQuery();
     }
-    public void GetRowByValue<T>(string tableName, string columnName, T value) {
+    public string GetColumnValueByPrimaryKey<T>(string tableName, string primaryKeyColumnName, T primaryKeyValue, string columnName) {
         using MySqlConnection connection = new(connectionString);
         connection.Open();
-        string valueString = value is string ? $"'{value}'" : value.ToString();
-        using MySqlCommand command = new($"DELETE FROM {tableName} WHERE {columnName} = {value}", connection);
-        command.ExecuteNonQuery();
+        string primaryKeyValueString = primaryKeyValue is string ? $"'{primaryKeyValue}'" : primaryKeyValue.ToString();
+        using MySqlCommand command = new($"SELECT {columnName} FROM {tableName} WHERE {primaryKeyColumnName} = {primaryKeyValueString}", connection);
+        object result = command.ExecuteScalar();
+        System.Diagnostics.Debug.WriteLine(result);
+        return result?.ToString();
     }
 }

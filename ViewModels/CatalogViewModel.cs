@@ -26,30 +26,30 @@ namespace NiceBike
             // Initialize the Bikes collection with some sample data
             Bikes = new ObservableCollection<CatalogBike>
             {
-                new CatalogBike(
-                    new Bike("City"),
-                    "Simple bike for city travels with all needed parts like mudguards and lights",
-                    499.99M,
-                    "bike.jpg",
-                    GetStockParts(),
-                    GetStockBuilt("City")
-                ),
-                new CatalogBike(
-                    new Bike("Explorer"),
-                    "A mountain bike with wider tires and more grooved, and adapted mudguards",
-                    499.99M,
-                    "bike.jpg",
-                    GetStockParts(),
-                    GetStockBuilt("Explorer")
-                ),
-                new CatalogBike(
-                    new Bike("Adventure"),
-                    "A mountain bike with reinforced frame, no luggage rack, mudguards or light",
-                    499.99M,
-                    "bike.jpg",
-                    GetStockParts(),
-                    GetStockBuilt("Adventure")
-                )
+                    new CatalogBike(
+        new Bike("City"),
+        App.db.GetColumnValueByPrimaryKey("bike_model","name","City","description"),
+        decimal.Parse(App.db.GetColumnValueByPrimaryKey("bike_model","name","City","price")),
+        App.db.GetColumnValueByPrimaryKey("bike_model","name","City","image"),
+        GetStockParts(),
+        GetStockBuilt("City")
+    ),
+    new CatalogBike(
+        new Bike("Explorer"),
+        App.db.GetColumnValueByPrimaryKey("bike_model","name","Explorer","description"),
+        decimal.Parse(App.db.GetColumnValueByPrimaryKey("bike_model","name","Explorer","price")),
+        App.db.GetColumnValueByPrimaryKey("bike_model","name","Explorer","image"),
+        GetStockParts(),
+        GetStockBuilt("Explorer")
+    ),
+    new CatalogBike(
+        new Bike("Adventure"),
+        App.db.GetColumnValueByPrimaryKey("bike_model","name","Adventure","description"),
+        decimal.Parse(App.db.GetColumnValueByPrimaryKey("bike_model","name","Adventure","price")),
+        App.db.GetColumnValueByPrimaryKey("bike_model", "name", "Adventure", "image"),
+        GetStockParts(),
+        GetStockBuilt("Adventure")
+    )
             };
 
             foreach (var bike in Bikes)
