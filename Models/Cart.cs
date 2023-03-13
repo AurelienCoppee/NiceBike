@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +41,9 @@ public class Cart
         }
         _items.Remove(item);
     }
+
     public void RemoveSomeFromCart(CatalogBike bike, int qt)
+
     {
         OrderItem item = FindOrderItem(bike);
         item?.remove(qt);
@@ -63,7 +65,9 @@ public class Cart
     }
     private OrderItem FindOrderItem(CatalogBike bike)
     {
+
         foreach (OrderItem item in _items)
+
         {
             if (item.GetBike() == bike)
             {
@@ -73,4 +77,6 @@ public class Cart
         }
         return null;
     }
+
 }
+
