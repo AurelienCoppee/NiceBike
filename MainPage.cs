@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using NiceBike;
 
-public class MainPage : Shell {
+public class MainPage : TabbedPage
+{
     public MainPage() {
-        // Ajoutez vos pages ici
-        AddTab(new CatalogPage(), "Catalog");
-    }
-
-    private void AddTab(Page page, string title) {
-        Items.Add(new ShellContent { Content = page, Title = title });
+        Children.Add(new CatalogPage());
     }
 
 }
