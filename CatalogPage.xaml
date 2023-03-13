@@ -1,99 +1,46 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBike.CatalogPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+                
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-    <ScrollView>
-        <VerticalStackLayout
+        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="6"
+               Source="bike.jpg" Aspect="AspectFill"/>
+        <Label Grid.Row="0" Grid.Column="0"
+               Text="NiceBikes" FontFamily="Helvetica Neue" FontSize="30" Padding="30"/>
+        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+               VerticalOptions="Start" HorizontalOptions="Center" Padding="30"
+               Text="City" FontFamily="Helvetica Neue" FontSize="50"/>
+        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Padding="30"
+               Text="Description Here" FontFamily="Helvetica Neue" FontSize="25"/>
+        <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" BorderColor="Grey"
+                Margin="7,25" HeightRequest="20"
+                Text="City" FontFamily="Helvetica Neue" FontSize="23"/>
+        <Button Grid.Row="0" Grid.Column="3" BackgroundColor="Transparent" BorderColor="Grey"
+                Margin="7,25" HeightRequest="20"
+                Text="Adventure" FontFamily="Helvetica Neue" FontSize="23"/>
+        <Button Grid.Row="0" Grid.Column="4" BackgroundColor="Transparent" BorderColor="Grey"
+                Margin="7,25" HeightRequest="20"
+               Text="Explorer" FontFamily="Helvetica Neue" FontSize="23"/>
+        <Button Grid.Row="2" Grid.Column="4" BackgroundColor="Transparent" BorderColor="Grey"
+                Margin="7,25" HeightRequest="20"
+                Text="Order" FontFamily="Helvetica Neue" FontSize="23"/>
+        <Button Grid.Row="2" Grid.Column="5" BackgroundColor="Transparent" BorderColor="Grey"
+                Margin="7,25" HeightRequest="20"
+               Text="More Details" FontFamily="Helvetica Neue" FontSize="23"/>
 
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
-
-            <HorizontalStackLayout>
-                <Button Text="Cart" Clicked="GoToCart"/>
-                <Button Text="Stock" Clicked="GoToStock"/>
-            </HorizontalStackLayout>
-
-
-            <CollectionView
-            ItemsSource="{Binding Bikes}">
-
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Image
-                                Source="{Binding Image}"
-                                Aspect="AspectFill"
-                                VerticalOptions="FillAndExpand"
-                                HorizontalOptions="FillAndExpand" />
-                            <StackLayout 
-                                BackgroundColor="Transparent"
-                                Padding="10"
-                                VerticalOptions="Start"
-                                HorizontalOptions="FillAndExpand">
-                                <Label
-                                    Text="{Binding Name}"
-                                    TextColor="Black"
-                                    SemanticProperties.HeadingLevel="Level1"
-                                    FontSize="30"
-                                    FontFamily="Franklin Gothic"
-                                    HorizontalOptions="Center"
-                                    Padding="50"
-                                    VerticalOptions="CenterAndExpand" />
-                            </StackLayout>
-                            <StackLayout 
-                                BackgroundColor="#AA000000"
-                                Padding="10"
-                                VerticalOptions="End"
-                                HorizontalOptions="FillAndExpand">
-                                
-                                <Label
-                                    Text="{Binding Description}"
-                                    SemanticProperties.Description="{Binding Description}"
-                                    FontSize="16"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="CenterAndExpand" />
-                                <Label
-                                    Text="{Binding Price, StringFormat='Price : {0:F0} €'}"
-                                    SemanticProperties.Description="{Binding Price}"
-                                    FontSize="16"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="CenterAndExpand" />
-                                <Label
-                                    Text="{Binding PartStock, StringFormat='Part Stock : {0:F0}'}"
-                                    SemanticProperties.Description="{Binding PartStock}"
-                                    FontSize="16"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="CenterAndExpand" />
-                                <Label
-                                    Text="{Binding BuiltStock, StringFormat='Built stock : {0:F0}'}"
-                                    SemanticProperties.Description="{Binding BuiltStock}"
-                                    FontSize="16"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                                <Label
-                                    Text="{Binding SizesAndColors}"
-                                    SemanticProperties.Description="{Binding SizesAndColors}"
-                                    FontSize="16"
-                                    HorizontalOptions="Center"/>
-                                <Button
-                                    Text="Add to Cart"
-                                    Clicked="AddToCart"
-                                    CommandParameter="{Binding .}"
-                                    HorizontalOptions="Center"
-                                     />
-                                <Button 
-                                    Text="Learn More"
-                                    Command="{Binding LearnMoreCommand}"
-                                    BackgroundColor="White"
-                                    TextColor="Black"
-                                    HorizontalOptions="Center" />
-                            </StackLayout>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </VerticalStackLayout>
-    </ScrollView>
+    </Grid>
 </ContentPage>
