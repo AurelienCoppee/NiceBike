@@ -4,11 +4,21 @@
 
     <ScrollView>
         <VerticalStackLayout
+
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
 
-            <CollectionView ItemsSource="{Binding Bikes}">
+
+            <HorizontalStackLayout>
+                <Button Text="Cart" Clicked="GoToCart"/>
+                <Button Text="Stock" Clicked="GoToStock"/>
+            </HorizontalStackLayout>
+
+
+            <CollectionView
+            ItemsSource="{Binding Bikes}">
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>

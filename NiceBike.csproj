@@ -32,6 +32,14 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
+	  <CodesignKey>iPhone Developer</CodesignKey>
+	  <MtouchDebug>true</MtouchDebug>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	  <CodesignKey>Mac Developer</CodesignKey>
+	  <PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
+	  <MtouchDebug>true</MtouchDebug>
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
@@ -48,7 +56,9 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <None Remove="Resources\Images\bike.jpg" />
+	  <None Remove="Resources\Images\adventure.jpg" />
+	  <None Remove="Resources\Images\city.jpg" />
+	  <None Remove="Resources\Images\explorer.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -63,12 +73,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Remove="Resources\Styles\Styles.xaml" />
+	  <MauiXaml Remove="Resources\Styles\Colors.xaml" />
+	</ItemGroup>
+	<ItemGroup>
 	  <MauiXaml Update="BikeDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="CartPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="StockManagment.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="DbPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <BundleResource Include="Resources\Styles\Styles.xaml" Condition=" '$(EnableDefaultXamlItems)' == 'true' ">
+	    <SubType>Designer</SubType>
+	  </BundleResource>
+	  <BundleResource Include="Resources\Styles\Colors.xaml" Condition=" '$(EnableDefaultXamlItems)' == 'true' ">
+	    <SubType>Designer</SubType>
+	  </BundleResource>
+	</ItemGroup>
 </Project>

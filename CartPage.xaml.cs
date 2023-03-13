@@ -1,3 +1,4 @@
+using MySql.Data.MySqlClient;
 using NiceBike.Models;
 using NiceBike.ViewModels;
 using System.Collections.ObjectModel;
@@ -21,5 +22,19 @@ public partial class CartPage : ContentPage
         ObservableCollection<OrderItem> orderItems = new ObservableCollection<OrderItem>(App.Cart.Items);
 
         _viewModel.CartItems = orderItems;
+    }
+
+    public void Order(object sender, EventArgs e) 
+    {
+        string email = "salut@gmail.com";
+        int payStatus = 1;
+        using MySqlConnection connection = new(App.db.connectionString);
+        connection.Open();
+        string queryString = "INSERT INTO bike_orders (email, pay_status) VALUES (@Email, @PayStatus)";
+        using MySqlCommand command = new(queryString, connection);
+        command.Parameters.AddWithValue("@Email", email);
+        command.Parameters.AddWithValue("@PayStatus", payStatus);
+        int rowsAffected = command.ExecuteNonQuery();
+        System.Diagnostics.Debug.WriteLine(App.Cart.Items);
     }
 }

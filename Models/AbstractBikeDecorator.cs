@@ -9,14 +9,11 @@ namespace NiceBike.Models;
 
 public abstract class AbstractBikeDecorator : AbstractBike
 {
-    
+
     protected readonly AbstractBike _bike;
     public AbstractBikeDecorator(AbstractBike bike)
     {
         _bike = bike;
-        Description = _bike.Description;
-        Price = _bike.Price;
         Name = _bike.Name;
-        Image = _bike.Image;
     }
 }

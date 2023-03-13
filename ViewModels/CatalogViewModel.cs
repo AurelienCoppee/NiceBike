@@ -2,6 +2,7 @@ using NiceBike.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using MySql.Data.MySqlClient;
+using TestNiceBike.Models;
 
 namespace NiceBike
 {
@@ -9,8 +10,8 @@ namespace NiceBike
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ObservableCollection<Bike> bikes;
-        public ObservableCollection<Bike> Bikes
+        private ObservableCollection<CatalogBike> bikes;
+        public ObservableCollection<CatalogBike> Bikes
         {
             get { return bikes; }
             set
@@ -23,32 +24,32 @@ namespace NiceBike
         public CatalogViewModel()
         {
             // Initialize the Bikes collection with some sample data
-            Bikes = new ObservableCollection<Bike>
+            Bikes = new ObservableCollection<CatalogBike>
             {
-                new Bike(
-                    "Simple bike for city travels with all needed parts like mudguards and lights",
-                    499.99M,
-                    "City Bike",
-                    "bike.jpg",
-                    GetStockParts(),
-                    GetStockBuilt()
-                ),
-                new Bike(
-                    "A mountain bike with wider tires and more grooved, and adapted mudguards",
-                    499.99M,
-                    "Explorer Bike",
-                    "bike.jpg",
-                    GetStockParts(),
-                    GetStockBuilt()
-                ),
-                new Bike(
-                    "A mountain bike with reinforced frame, no luggage rack, mudguards or light",
-                    499.99M,
-                    "Adventure Bike",
-                    "bike.jpg",
-                    GetStockParts(),
-                    GetStockBuilt()
-                )
+                    new CatalogBike(
+        new Bike("City"),
+        App.db.GetColumnValueByPrimaryKey("bike_model","name","City","description"),
+        decimal.Parse(App.db.GetColumnValueByPrimaryKey("bike_model","name","City","price")),
+        App.db.GetColumnValueByPrimaryKey("bike_model","name","City","image"),
+        GetStockParts(),
+        GetStockBuilt("City")
+    ),
+    new CatalogBike(
+        new Bike("Explorer"),
+        App.db.GetColumnValueByPrimaryKey("bike_model","name","Explorer","description"),
+        decimal.Parse(App.db.GetColumnValueByPrimaryKey("bike_model","name","Explorer","price")),
+        App.db.GetColumnValueByPrimaryKey("bike_model","name","Explorer","image"),
+        GetStockParts(),
+        GetStockBuilt("Explorer")
+    ),
+    new CatalogBike(
+        new Bike("Adventure"),
+        App.db.GetColumnValueByPrimaryKey("bike_model","name","Adventure","description"),
+        decimal.Parse(App.db.GetColumnValueByPrimaryKey("bike_model","name","Adventure","price")),
+        App.db.GetColumnValueByPrimaryKey("bike_model", "name", "Adventure", "image"),
+        GetStockParts(),
+        GetStockBuilt("Adventure")
+    )
             };
 
             foreach (var bike in Bikes)
@@ -59,24 +60,10 @@ namespace NiceBike
                 });
             }
         }
-        private int GetStockBuilt()
+        private int GetStockBuilt(String name)
         {
-            string connectionString = "server=pat.infolab.ecam.be;port=63314;database=NiceBike;user=admin;password=password;";
-
-            MySqlConnection connection = new MySqlConnection(connectionString);
-
-                connection.Open();
-                Console.WriteLine("Connection successful!");
-
-                string queryString = "SELECT COUNT(*) FROM bike_list WHERE model = 'City'";
-                using (MySqlCommand command = new MySqlCommand(queryString, connection)) {
-                        object result = command.ExecuteScalar();
-                        int rowCount = Convert.ToInt32(result);
-                        Console.WriteLine("Row count: " + rowCount);
-                connection.Close();
-                return rowCount;
-            }
-            }
+            return App.db.NumberOfRowsWithValue("bike_list", "model", name);
+        }
         private int GetStockParts()
         {
             List<(string,int)> partList = new List<(string,int)>
@@ -89,11 +76,11 @@ namespace NiceBike
             int leastBuildable = 1000000;
             foreach ((string, int) part in partList)
             {
-                int avQuentity = 20;//Query the db with the name of the part
-                avQuentity = avQuentity / part.Item2;
-                if (avQuentity< leastBuildable)
+                int avQuantity = App.db.NumberOfRowsWithValue("parts", "name", part.Item1);
+                avQuantity = avQuantity / part.Item2;
+                if (avQuantity< leastBuildable)
                 {
-                    leastBuildable = avQuentity;
+                    leastBuildable = avQuantity;
                 }
             }
             return leastBuildable;
